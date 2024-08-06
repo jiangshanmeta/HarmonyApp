@@ -1,0 +1,18 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/Second",
+    "pages/Third",
+    "pages/StateDemo",
+    "pages/Style",
+    "pages/Login",
+    "pages/Border",
+    "pages/Container",
+    "pages/ListItemDemo",
+    "pages/FlexDemo",
+    "pages/FlexWrapDemo",
+    "pages/PositionDemo",
+    "pages/StackDemo",
+    "pages/WebViewDemo"
+  ]
+}
