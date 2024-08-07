@@ -51,6 +51,11 @@ struct Index {
         })
       })
 
+      Button("Comment")
+        .onClick(() => {
+          router.pushUrl({ url: "pages/Comment" })
+        })
+
     }
     .width("100%")
 

@@ -17,6 +17,7 @@
     "pages/SweiperDemo",
     "pages/ScrollDemo",
     "pages/TabDemo",
-    "pages/CallbackDemo"
+    "pages/CallbackDemo",
+    "pages/Comment"
   ]
 }
