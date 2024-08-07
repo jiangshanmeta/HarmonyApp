@@ -3,23 +3,47 @@
 function overBuilder(){}
 
 @Component
-struct Child {
-  @Builder
-  doNothingBuilder(){}
-
+struct ChildPattern {
   @BuilderParam
-  customBuilderParam: ()=>void = this.doNothingBuilder;
-
-  @BuilderParam
-  customOverBuilderParam: ()=>void = overBuilder
+  children: ()=>void = overBuilder
 
   build(){
     Column(){
-      this.customOverBuilderParam()
+      Text("render children")
+      this.children()
     }
+    .width("100%")
+    .backgroundColor(Color.Pink)
+  }
+}
+
+
+interface UserModel {
+  name: string;
+  age: number;
+}
+
+@Component
+struct ChildRenderWithProps {
+  @BuilderParam
+  renderContent: (prop:UserModel)=> void = overBuilder;
+
+  build() {
+    Column(){
+      Text("renderContent with Props")
+        .fontSize(24)
+
+      this.renderContent({name:"jiangshan",age:18})
+    }
+    .width("100%")
+    .backgroundColor(Color.Orange)
+
+
   }
 
 }
+
+
 
 @Component
 export struct BuilderParamDemo{
@@ -28,9 +52,32 @@ export struct BuilderParamDemo{
     Text("Text from parent")
   }
 
+  @Builder
+  renderUserInfo($$:UserModel){
+    Row(){
+      Text($$.name)
+        .fontSize(24)
+        .fontColor(Color.Gray)
+
+      Text(`${$$.age}`)
+        .fontSize(18)
+        .fontColor(Color.Gray)
+    }
+
+  }
+
   build(){
     Column(){
-      Child({customOverBuilderParam:this.slot})
+      ChildPattern(){
+        this.slot()
+      }
+
+      ChildRenderWithProps({
+        renderContent:this.renderUserInfo
+      })
+        .margin({
+          top:16
+        })
     }
   }
 }

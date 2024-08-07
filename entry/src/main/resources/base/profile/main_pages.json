@@ -13,6 +13,10 @@
     "pages/FlexWrapDemo",
     "pages/PositionDemo",
     "pages/StackDemo",
-    "pages/WebViewDemo"
+    "pages/WebViewDemo",
+    "pages/SweiperDemo",
+    "pages/ScrollDemo",
+    "pages/TabDemo",
+    "pages/CallbackDemo"
   ]
 }
