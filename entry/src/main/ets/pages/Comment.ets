@@ -2,10 +2,16 @@ import { CommentBottom } from '../components/CommentBottom'
 import { CommentHeader } from '../components/CommentHeader'
 import { CommentItem } from '../components/CommentItem'
 import { CommentModel } from '../model/comment'
+import { router } from '@kit.ArkUI'
+
+interface LoginInfo {
+  username:string;
+}
 
 @Entry
 @Component
 struct Comment {
+  @State username:string = ""
   @State comments: CommentModel[] = [
     {
       name:"张角",
@@ -59,6 +65,12 @@ struct Comment {
 
   ]
 
+  aboutToAppear(): void {
+    const routeParam = router.getParams() as LoginInfo
+    this.username = routeParam.username
+
+  }
+
 
   build() {
     Column(){
@@ -102,7 +114,7 @@ struct Comment {
       CommentBottom({
         onSubmit:(comment)=>{
           this.comments.unshift({
-            name:"anonymous",
+            name:this.username,
             comment,
             like:0,
             isLike:false,

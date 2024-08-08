@@ -4,6 +4,7 @@ import {BusinessError} from "@kit.BasicServicesKit"
 @Entry
 @Component
 struct Login {
+  @State username:string = "";
 
 
   build() {
@@ -30,7 +31,8 @@ struct Login {
         .width("50%")
 
       TextInput({
-        placeholder:"Please Input UserName lah"
+        placeholder:"Please Input UserName",
+        text: $$this.username
       })
 
       TextInput({
@@ -40,6 +42,14 @@ struct Login {
 
       Button("Login")
         .width("100%")
+        .onClick(()=>{
+          router.pushUrl({
+            url:"pages/Comment",
+            params:{
+              username:this.username
+            }
+          })
+        })
 
       Row({space:8}){
         Text("注册账户")
