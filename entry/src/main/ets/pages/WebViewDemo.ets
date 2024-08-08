@@ -37,7 +37,7 @@ struct WebViewDemo {
           .fontWeight(FontWeight.Bolder)
 
 
-        Button('Load H5 page')
+        Button('Init Connection')
           .onClick(() => {
             this.isShowWebview = true;
             try {
@@ -95,9 +95,9 @@ struct WebViewDemo {
 
 
 
-      if(this.isShowWebview){
-        Web({ src: $rawfile("index.html"), controller: this.controller })
-      }
+
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+
 
 
 
